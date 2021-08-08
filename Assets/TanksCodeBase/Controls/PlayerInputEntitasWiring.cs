@@ -46,7 +46,7 @@ namespace TanksCodeBase
       GameEntity playerEnt = this.gameContext.CreateEntity();
       playerEnt.AddPlayer(0, true);
       playerEnt.AddView(this.playerGameObject);
-      playerEnt.AddCharMoveSpeed(1.5f);
+      playerEnt.AddCharMoveSpeed(5f);
       playerEnt.AddAvatarMove(Vector3.zero, false);
       playerEnt.AddPosition(Vector3.zero);
       playerEnt.AddRotation(Quaternion.identity);
