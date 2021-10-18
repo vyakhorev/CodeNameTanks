@@ -13,6 +13,8 @@ namespace TanksCodeBase
     public static GameController instance;
     public GameContext gameContext;
 
+    private GameStateMachine gameSM;
+
     private void Awake()
     {
       instance = this;
@@ -20,33 +22,42 @@ namespace TanksCodeBase
 
     void Start()
     {
-      Contexts contexts = Contexts.sharedInstance;
-      gameContext = contexts.game;
+      StateRunningLevel startState = new StateRunningLevel();
+      startState.InitState();
+      gameSM = new GameStateMachine();
+      gameSM.SetupMachine(startState);
       
-      updateSystems = new Feature("Regular update systems")
-        .Add(new InputFeatures(contexts))
-        .Add(new ViewFeatures(contexts))
-        .Add(new AIFeatures(contexts))
-        .Add(new GameRulesFeatures(contexts))
-        .Add(new AvatarFeatures(contexts));
-      
-      fixedUpdateSystems = new Feature("Fixed update systems")
-        .Add(new ShootingFeatures(contexts));
-      
-      updateSystems.Initialize();
-      fixedUpdateSystems.Initialize();
+      // Contexts contexts = Contexts.sharedInstance;
+      // gameContext = contexts.game;
+      //
+      // updateSystems = new Feature("Regular update systems")
+      //   .Add(new InputFeatures(contexts))
+      //   .Add(new ViewFeatures(contexts))
+      //   .Add(new AIFeatures(contexts))
+      //   .Add(new GameRulesFeatures(contexts))
+      //   .Add(new AvatarFeatures(contexts));
+      //
+      // fixedUpdateSystems = new Feature("Fixed update systems")
+      //   .Add(new ShootingFeatures(contexts));
+      //
+      // updateSystems.Initialize();
+      // fixedUpdateSystems.Initialize();
     }
-
+    
     void Update()
     {
-      updateSystems.Execute();
-      updateSystems.Cleanup();
+      gameSM.RunUpdate();
+      
+      // updateSystems.Execute();
+      // updateSystems.Cleanup();
     }
     
     void FixedUpdate()
     {
-      fixedUpdateSystems.Execute();
-      fixedUpdateSystems.Cleanup();
+      gameSM.RunFixedUpdate();
+      
+      // fixedUpdateSystems.Execute();
+      // fixedUpdateSystems.Cleanup();
     }
   }
 }
