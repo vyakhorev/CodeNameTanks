@@ -8,6 +8,9 @@ namespace TanksCodeBase
 
   public class GameController : MonoBehaviour
   {
+    /* In different states different systems are active.
+     When we move from state to state, we call cleanup and
+     init systems corresponding to new state. */
     Systems fixedUpdateSystems;
     Systems updateSystems;
     public static GameController instance;
@@ -18,46 +21,89 @@ namespace TanksCodeBase
     private void Awake()
     {
       instance = this;
+      DontDestroyOnLoad(this);
     }
+
+    void SetupGameStateMachine()
+    {
+      // All states
+      var stateGameLoad = new StateGameLoad();
+      var stateStartingState = new StateStartingScene();
+      var stateRunningLevel = new StateRunningLevel();
+      var stateRunningAndGeneratingLevel = new StateRunningAndGeneratingLevel();
+      
+      // Features for states
+      Contexts contexts = Contexts.sharedInstance;
+      gameContext = contexts.game;
+      
+      updateSystems = new Feature("Regular update systems")
+        .Add(new InputFeatures(contexts))
+        .Add(new ViewFeatures(contexts))
+        .Add(new AIFeatures(contexts))
+        .Add(new GameRulesFeatures(contexts))
+        .Add(new AvatarFeatures(contexts));
+          
+      fixedUpdateSystems = new Feature("Fixed update systems")
+        .Add(new ShootingFeatures(contexts));
+        
+      updateSystems.Initialize();
+      fixedUpdateSystems.Initialize();
+      
+      // Setup these states
+      stateRunningLevel.updateSystems = updateSystems;
+      stateRunningLevel.fixedUpdateSystems = fixedUpdateSystems;
+      
+      // The state machine instance
+      gameSM = new GameStateMachine();
+
+      // Setup conditional transitions
+
+      Func<GameStateMachine, bool> gameIsLoaded = machine =>
+      {
+        return machine.blackBoard.CheckFlag("GameLoaded");
+      };
+      
+      Func<GameStateMachine, bool> lobbyLeft = machine =>
+      {
+        return machine.blackBoard.CheckFlag("LobbyLeft");
+      };
+      
+      var loadToStarting = new Transition();
+      loadToStarting.fromState = stateGameLoad;
+      loadToStarting.toState = stateStartingState;
+      loadToStarting.fireCondition = gameIsLoaded;
+      
+      var startingToRunning = new Transition();
+      startingToRunning.fromState = stateStartingState;
+      startingToRunning.toState = stateRunningLevel;
+      startingToRunning.fireCondition = lobbyLeft;
+      
+      gameSM.AddTransition(loadToStarting);
+      gameSM.AddTransition(startingToRunning);
+        
+      gameSM.SetupMachine(stateGameLoad);
+    }
+    
+    
 
     void Start()
     {
-      StateRunningLevel startState = new StateRunningLevel();
-      startState.InitState();
-      gameSM = new GameStateMachine();
-      gameSM.SetupMachine(startState);
+      SetupGameStateMachine();
+      gameSM.blackBoard.SetFlag("GameLoaded", true);
+      gameSM.blackBoard.SetFlag("LobbyLeft", true);
       
-      // Contexts contexts = Contexts.sharedInstance;
-      // gameContext = contexts.game;
-      //
-      // updateSystems = new Feature("Regular update systems")
-      //   .Add(new InputFeatures(contexts))
-      //   .Add(new ViewFeatures(contexts))
-      //   .Add(new AIFeatures(contexts))
-      //   .Add(new GameRulesFeatures(contexts))
-      //   .Add(new AvatarFeatures(contexts));
-      //
-      // fixedUpdateSystems = new Feature("Fixed update systems")
-      //   .Add(new ShootingFeatures(contexts));
-      //
-      // updateSystems.Initialize();
-      // fixedUpdateSystems.Initialize();
     }
     
     void Update()
     {
       gameSM.RunUpdate();
       
-      // updateSystems.Execute();
-      // updateSystems.Cleanup();
     }
     
     void FixedUpdate()
     {
       gameSM.RunFixedUpdate();
       
-      // fixedUpdateSystems.Execute();
-      // fixedUpdateSystems.Cleanup();
     }
   }
 }

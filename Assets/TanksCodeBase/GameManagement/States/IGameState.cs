@@ -1,9 +1,10 @@
-﻿namespace TanksCodeBase
+﻿using System.Collections.Generic;
+
+namespace TanksCodeBase
 {
   public interface IGameState
   {
-    void InitState();
-    
+   
     void Enter();
 
     void Exit();

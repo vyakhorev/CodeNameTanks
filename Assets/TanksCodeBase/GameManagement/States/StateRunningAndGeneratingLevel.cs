@@ -1,11 +1,9 @@
-﻿namespace TanksCodeBase
+﻿using System.Collections.Generic;
+
+namespace TanksCodeBase
 {
   public class StateRunningAndGeneratingLevel : IGameState
   {
-    public void InitState()
-    {
-      //throw new System.NotImplementedException();
-    }
 
     public void Enter()
     {
