@@ -2,25 +2,25 @@
 
 namespace TanksCodeBase
 {
-  public class StateRunningAndGeneratingLevel : IGameState
+  public class StateRunningAndGeneratingLevel : GameState
   {
 
-    public void Enter()
+    public override void Enter()
     {
       //throw new System.NotImplementedException();
     }
 
-    public void Exit()
+    public override void Exit()
     {
       //throw new System.NotImplementedException();
     }
 
-    public void RunUpdate()
+    public override void RunUpdate()
     {
       //throw new System.NotImplementedException();
     }
 
-    public void RunFixedUpdate()
+    public override void RunFixedUpdate()
     {
       //throw new System.NotImplementedException();
     }

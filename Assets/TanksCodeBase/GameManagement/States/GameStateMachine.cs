@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 namespace TanksCodeBase
@@ -8,7 +7,7 @@ namespace TanksCodeBase
   {
 
     public BlackBoard blackBoard;
-    private IGameState CurrentState;
+    private GameState CurrentState;
     private List<Transition> transitions;
     private float transitionFreq = 0.5f;
     private float transitionCheck;
@@ -25,13 +24,13 @@ namespace TanksCodeBase
       transitions.Add(transition);
     }
     
-    public void SetupMachine(IGameState startingState)
+    public void SetupMachine(GameState startingState)
     {
       CurrentState = startingState;
       startingState.Enter();
     }
     
-    public void EnterState(IGameState newState)
+    public void EnterState(GameState newState)
     {
       Debug.Log("Entering new state");
       CurrentState.Exit();
@@ -47,7 +46,7 @@ namespace TanksCodeBase
         {
           if (tr_i.fireCondition(this))
           {
-            this.EnterState(tr_i.toState);
+            EnterState(tr_i.toState);
           }
         }
       }

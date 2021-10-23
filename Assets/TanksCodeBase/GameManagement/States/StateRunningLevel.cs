@@ -3,29 +3,29 @@ using Entitas;
 
 namespace TanksCodeBase
 {
-  public class StateRunningLevel : IGameState
+  public class StateRunningLevel : GameState
   {
     private GameContext gameContext;
     public Systems updateSystems;
     public Systems fixedUpdateSystems;
     
-    public void Enter()
+    public override void Enter()
     {
       
     }
 
-    public void Exit()
+    public override void Exit()
     {
       
     }
 
-    public void RunUpdate()
+    public override void RunUpdate()
     {
       updateSystems.Execute();
       updateSystems.Cleanup();
     }
 
-    public void RunFixedUpdate()
+    public override void RunFixedUpdate()
     {
       fixedUpdateSystems.Execute();
       fixedUpdateSystems.Cleanup();

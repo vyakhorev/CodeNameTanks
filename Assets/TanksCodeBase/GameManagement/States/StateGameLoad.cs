@@ -2,25 +2,26 @@
 
 namespace TanksCodeBase
 {
-  public class StateGameLoad : IGameState
+  public class StateGameLoad : GameState
   {
 
-    public void Enter()
+    public override void Enter()
     {
       Debug.Log("Loading game");
+
     }
 
-    public void Exit()
+    public override void Exit()
     {
       Debug.Log("Game loaded");
     }
 
-    public void RunUpdate()
+    public override void RunUpdate()
     {
       
     }
 
-    public void RunFixedUpdate()
+    public override void RunFixedUpdate()
     {
       
     }

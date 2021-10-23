@@ -5,8 +5,8 @@ namespace TanksCodeBase
   public class Transition
   {
 
-    public IGameState fromState;
-    public IGameState toState;
+    public GameState fromState;
+    public GameState toState;
 
     public Func<GameStateMachine, bool> fireCondition;
 

@@ -1,24 +1,24 @@
 ﻿namespace TanksCodeBase
 {
-  public class StateStartingScene : IGameState
+  public class StateStartingScene : GameState
   {
 
-    public void Enter()
+    public override void Enter()
     {
       
     }
 
-    public void Exit()
+    public override void Exit()
     {
       
     }
 
-    public void RunUpdate()
+    public override void RunUpdate()
     {
       
     }
 
-    public void RunFixedUpdate()
+    public override void RunFixedUpdate()
     {
       
     }
