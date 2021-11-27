@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 namespace TanksCodeBase
 {
 
+  [RequireComponent(typeof(LevelManager))]
   public class GameController : MonoBehaviour
   {
     /* In different states different systems are active.
@@ -17,10 +18,13 @@ namespace TanksCodeBase
     public GameContext gameContext;
 
     private GameStateMachine gameSM;
+    
+    private LevelManager levelManager;
 
     private void Awake()
     {
       instance = this;
+      levelManager = GetComponent<LevelManager>();
       DontDestroyOnLoad(this);
     }
 

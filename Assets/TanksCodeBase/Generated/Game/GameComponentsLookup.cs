@@ -25,24 +25,25 @@ public static class GameComponentsLookup {
     public const int GameInputLink = 14;
     public const int KinematicMove = 15;
     public const int Lifespan = 16;
-    public const int Move = 17;
-    public const int NavigatableEnemy = 18;
-    public const int PathFollower = 19;
-    public const int PathMilestone = 20;
-    public const int Player = 21;
-    public const int PlayerPositioned = 22;
-    public const int Position = 23;
-    public const int RandomWalker = 24;
-    public const int Rotation = 25;
-    public const int Shooter = 26;
-    public const int SpawnPoint = 27;
-    public const int TargetWaypoint = 28;
-    public const int Teleport = 29;
-    public const int TraceMovement = 30;
-    public const int View = 31;
-    public const int ViewPrefab = 32;
+    public const int LobbyTeleport = 17;
+    public const int Move = 18;
+    public const int NavigatableEnemy = 19;
+    public const int PathFollower = 20;
+    public const int PathMilestone = 21;
+    public const int Player = 22;
+    public const int PlayerPositioned = 23;
+    public const int Position = 24;
+    public const int RandomWalker = 25;
+    public const int Rotation = 26;
+    public const int Shooter = 27;
+    public const int SpawnPoint = 28;
+    public const int TargetWaypoint = 29;
+    public const int Teleport = 30;
+    public const int TraceMovement = 31;
+    public const int View = 32;
+    public const int ViewPrefab = 33;
 
-    public const int TotalComponents = 33;
+    public const int TotalComponents = 34;
 
     public static readonly string[] componentNames = {
         "AIConePerception",
@@ -62,6 +63,7 @@ public static class GameComponentsLookup {
         "GameInputLink",
         "KinematicMove",
         "Lifespan",
+        "LobbyTeleport",
         "Move",
         "NavigatableEnemy",
         "PathFollower",
@@ -98,6 +100,7 @@ public static class GameComponentsLookup {
         typeof(TanksCodeBase.GameInputLinkComponent),
         typeof(TanksCodeBase.KinematicMoveComponent),
         typeof(TanksCodeBase.LifespanComponent),
+        typeof(TanksCodeBase.LobbyTeleportComponent),
         typeof(TanksCodeBase.MoveComponent),
         typeof(TanksCodeBase.NavigatableEnemyComponent),
         typeof(TanksCodeBase.PathFollowerComponent),
