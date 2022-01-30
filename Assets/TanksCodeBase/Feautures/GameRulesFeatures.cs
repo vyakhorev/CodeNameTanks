@@ -11,6 +11,11 @@
       Add(new SpawnPrefabSystem(contexts));
       Add(new LifespanSystem(contexts));
       Add(new SpawnAtPointsSystem(contexts));
+
+      Add(new AuthInteractiveBuildingsSystem(contexts));
+      Add(new InteractionCounterSystem(contexts));
+      Add(new NewWorldStartSystem(contexts));
+
     }
   }
 }

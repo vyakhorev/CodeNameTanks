@@ -11,17 +11,17 @@ public partial class GameEntity {
     public TanksCodeBase.LobbyTeleportComponent lobbyTeleport { get { return (TanksCodeBase.LobbyTeleportComponent)GetComponent(GameComponentsLookup.LobbyTeleport); } }
     public bool hasLobbyTeleport { get { return HasComponent(GameComponentsLookup.LobbyTeleport); } }
 
-    public void AddLobbyTeleport(float newWaitedTime) {
+    public void AddLobbyTeleport(TanksCodeBase.EnumLevelTypes newLevelType) {
         var index = GameComponentsLookup.LobbyTeleport;
         var component = (TanksCodeBase.LobbyTeleportComponent)CreateComponent(index, typeof(TanksCodeBase.LobbyTeleportComponent));
-        component.waitedTime = newWaitedTime;
+        component.levelType = newLevelType;
         AddComponent(index, component);
     }
 
-    public void ReplaceLobbyTeleport(float newWaitedTime) {
+    public void ReplaceLobbyTeleport(TanksCodeBase.EnumLevelTypes newLevelType) {
         var index = GameComponentsLookup.LobbyTeleport;
         var component = (TanksCodeBase.LobbyTeleportComponent)CreateComponent(index, typeof(TanksCodeBase.LobbyTeleportComponent));
-        component.waitedTime = newWaitedTime;
+        component.levelType = newLevelType;
         ReplaceComponent(index, component);
     }
 

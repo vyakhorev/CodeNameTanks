@@ -23,27 +23,28 @@ public static class GameComponentsLookup {
     public const int DirectionImpact = 12;
     public const int EnemyTag = 13;
     public const int GameInputLink = 14;
-    public const int KinematicMove = 15;
-    public const int Lifespan = 16;
-    public const int LobbyTeleport = 17;
-    public const int Move = 18;
-    public const int NavigatableEnemy = 19;
-    public const int PathFollower = 20;
-    public const int PathMilestone = 21;
-    public const int Player = 22;
-    public const int PlayerPositioned = 23;
-    public const int Position = 24;
-    public const int RandomWalker = 25;
-    public const int Rotation = 26;
-    public const int Shooter = 27;
-    public const int SpawnPoint = 28;
-    public const int TargetWaypoint = 29;
-    public const int Teleport = 30;
-    public const int TraceMovement = 31;
-    public const int View = 32;
-    public const int ViewPrefab = 33;
+    public const int InteractiveZone = 15;
+    public const int KinematicMove = 16;
+    public const int Lifespan = 17;
+    public const int LobbyTeleport = 18;
+    public const int Move = 19;
+    public const int NavigatableEnemy = 20;
+    public const int PathFollower = 21;
+    public const int PathMilestone = 22;
+    public const int Player = 23;
+    public const int PlayerPositioned = 24;
+    public const int Position = 25;
+    public const int RandomWalker = 26;
+    public const int Rotation = 27;
+    public const int Shooter = 28;
+    public const int SpawnPoint = 29;
+    public const int TargetWaypoint = 30;
+    public const int Teleport = 31;
+    public const int TraceMovement = 32;
+    public const int View = 33;
+    public const int ViewPrefab = 34;
 
-    public const int TotalComponents = 34;
+    public const int TotalComponents = 35;
 
     public static readonly string[] componentNames = {
         "AIConePerception",
@@ -61,6 +62,7 @@ public static class GameComponentsLookup {
         "DirectionImpact",
         "EnemyTag",
         "GameInputLink",
+        "InteractiveZone",
         "KinematicMove",
         "Lifespan",
         "LobbyTeleport",
@@ -98,6 +100,7 @@ public static class GameComponentsLookup {
         typeof(TanksCodeBase.DirectionImpactComponent),
         typeof(TanksCodeBase.EnemyTagComponent),
         typeof(TanksCodeBase.GameInputLinkComponent),
+        typeof(TanksCodeBase.InteractiveZone),
         typeof(TanksCodeBase.KinematicMoveComponent),
         typeof(TanksCodeBase.LifespanComponent),
         typeof(TanksCodeBase.LobbyTeleportComponent),
