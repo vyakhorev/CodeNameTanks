@@ -11,23 +11,25 @@ public partial class GameEntity {
     public TanksCodeBase.InteractiveZone interactiveZone { get { return (TanksCodeBase.InteractiveZone)GetComponent(GameComponentsLookup.InteractiveZone); } }
     public bool hasInteractiveZone { get { return HasComponent(GameComponentsLookup.InteractiveZone); } }
 
-    public void AddInteractiveZone(float newWaitedTime, float newTimeToTrigger, bool newIsTriggered, float newRadius) {
+    public void AddInteractiveZone(float newWaitedTime, float newTimeToTrigger, bool newIsTriggered, float newRadius, bool newUnderExecution) {
         var index = GameComponentsLookup.InteractiveZone;
         var component = (TanksCodeBase.InteractiveZone)CreateComponent(index, typeof(TanksCodeBase.InteractiveZone));
         component.waitedTime = newWaitedTime;
         component.timeToTrigger = newTimeToTrigger;
         component.isTriggered = newIsTriggered;
         component.radius = newRadius;
+        component.underExecution = newUnderExecution;
         AddComponent(index, component);
     }
 
-    public void ReplaceInteractiveZone(float newWaitedTime, float newTimeToTrigger, bool newIsTriggered, float newRadius) {
+    public void ReplaceInteractiveZone(float newWaitedTime, float newTimeToTrigger, bool newIsTriggered, float newRadius, bool newUnderExecution) {
         var index = GameComponentsLookup.InteractiveZone;
         var component = (TanksCodeBase.InteractiveZone)CreateComponent(index, typeof(TanksCodeBase.InteractiveZone));
         component.waitedTime = newWaitedTime;
         component.timeToTrigger = newTimeToTrigger;
         component.isTriggered = newIsTriggered;
         component.radius = newRadius;
+        component.underExecution = newUnderExecution;
         ReplaceComponent(index, component);
     }
 

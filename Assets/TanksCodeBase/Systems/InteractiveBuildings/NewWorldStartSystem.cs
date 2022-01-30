@@ -27,9 +27,11 @@ namespace TanksCodeBase
       {
         if (ent_i.interactiveZone.isTriggered)
         {
+          ent_i.interactiveZone.underExecution = true;
+          ent_i.interactiveZone.waitedTime = 0f;
           ent_i.interactiveZone.isTriggered = false;
           Debug.Log("Do teleport");
-          
+          ent_i.interactiveZone.underExecution = false;
         } 
       }
     }

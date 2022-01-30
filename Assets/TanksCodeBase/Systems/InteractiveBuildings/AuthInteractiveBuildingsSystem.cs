@@ -25,7 +25,8 @@ namespace TanksCodeBase
         interactiveBuilding.AddInteractiveZone(newWaitedTime: 0f,
                                                newTimeToTrigger: comp_i.timeToTrigger,
                                                newIsTriggered: false,
-                                               newRadius: comp_i.radius);
+                                               newRadius: comp_i.radius,
+                                               newUnderExecution: false);
         switch (comp_i.buildingType)
         {
           case EnumBuildingTypes.LevelTeleporter:

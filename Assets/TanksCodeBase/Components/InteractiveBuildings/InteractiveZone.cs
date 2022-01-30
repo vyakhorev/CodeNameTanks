@@ -10,5 +10,6 @@ namespace TanksCodeBase
     public float timeToTrigger;
     public bool isTriggered;
     public float radius;
+    public bool underExecution;
   }
 }

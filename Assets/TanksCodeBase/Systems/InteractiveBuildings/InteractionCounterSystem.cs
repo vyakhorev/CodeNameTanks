@@ -31,6 +31,10 @@ namespace TanksCodeBase
       // Should optimize it one day
       foreach (GameEntity e in interactiveGroup.GetEntities())
       {
+        if (e.interactiveZone.underExecution)
+        {
+          continue;
+        }
         foreach (GameEntity p in interactorsGroup.GetEntities())
         {
           if ((e.position.value - p.position.value).sqrMagnitude < e.interactiveZone.radius)
