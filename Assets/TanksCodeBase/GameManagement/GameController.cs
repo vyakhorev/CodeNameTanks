@@ -17,7 +17,7 @@ namespace TanksCodeBase
     public static GameController instance;
     public GameContext gameContext;
 
-    private GameStateMachine gameSM;
+    public GameStateMachine gameSM;
     
     private LevelManager levelManager;
 
@@ -50,12 +50,15 @@ namespace TanksCodeBase
       fixedUpdateSystems = new Feature("Fixed update systems")
         .Add(new ShootingFeatures(contexts));
         
-      updateSystems.Initialize();
-      fixedUpdateSystems.Initialize();
+      
       
       // Setup these states
+      stateStartingState.updateSystems = updateSystems;
+      stateStartingState.fixedUpdateSystems = fixedUpdateSystems;
+      
       stateRunningLevel.updateSystems = updateSystems;
       stateRunningLevel.fixedUpdateSystems = fixedUpdateSystems;
+      stateRunningLevel.levelManager = levelManager;
       
       // The state machine instance
       gameSM = new GameStateMachine();
@@ -94,8 +97,7 @@ namespace TanksCodeBase
     {
       SetupGameStateMachine();
       gameSM.blackBoard.SetFlag("GameLoaded", true);
-      gameSM.blackBoard.SetFlag("LobbyLeft", true);
-      
+
     }
     
     void Update()

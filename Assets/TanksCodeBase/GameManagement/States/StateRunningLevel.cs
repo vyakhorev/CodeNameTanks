@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 namespace TanksCodeBase
 {
@@ -8,10 +9,12 @@ namespace TanksCodeBase
     private GameContext gameContext;
     public Systems updateSystems;
     public Systems fixedUpdateSystems;
+    public LevelManager levelManager;
     
     public override void Enter()
     {
-      
+      Debug.Log("Entering game from a real state machine");
+      levelManager.fromLobbyToTrain();
     }
 
     public override void Exit()

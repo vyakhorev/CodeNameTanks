@@ -16,7 +16,6 @@ namespace TanksCodeBase
     public void Initialize()
     {
       GameEntity cameraTarget = gameContext.CreateEntity();
-      // TODO remove signleton dependence
       cameraTarget.AddView(GameInstance.instance.CameraFollowObject);
       cameraTarget.AddPosition(cameraTarget.view.gameObject.transform.position);
       cameraTarget.AddRotation(Quaternion.identity);

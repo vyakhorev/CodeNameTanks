@@ -30,11 +30,15 @@ namespace TanksCodeBase
           ent_i.interactiveZone.underExecution = true;
           ent_i.interactiveZone.waitedTime = 0f;
           ent_i.interactiveZone.isTriggered = false;
-          Debug.Log("Do teleport");
+          
+          GameController gameContr = GameController.instance;
+          gameContr.gameSM.blackBoard.SetFlag("LobbyLeft", true);
+          
           ent_i.interactiveZone.underExecution = false;
         } 
       }
     }
+    
     
   }
 }
